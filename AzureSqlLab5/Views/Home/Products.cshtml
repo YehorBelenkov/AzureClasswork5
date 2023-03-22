@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var product in ViewBag.products)
+    {
+        <tr>
+            <td>@product.Name</td>
+            <td>@product.Description</td>
+            <td>@product.Price</td>
+            <td>@product.CategoryId</td>
+            <form method="post" action="DeleteProducts">
+                <input type="hidden" value="@product.Id">
+            <button type="submit">Delete @product.Name</button>
+            </form>
+        </tr>
+    }
+</table>
+<h2>Add New Product</h2>
+<form method="post" action="AddProducts">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br>
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description"><br>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price"><br>
+
+    <label for="categoryid">CategoryId:</label>
+    <input type="number" id="categoryid" name="categoryid"><br>
+
+    <input type="submit" value="Add">
+</form>
+
